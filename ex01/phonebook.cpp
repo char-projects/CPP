@@ -1,21 +1,32 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 # include <iostream>
+# include <cstring>
 
 void exit() {
-    // Exit program
+    std::cout << "Exiting program....." << std::endl;
 }
 
 void search() {
-    // Search contact
+    std::cout << "Searching contact....." << std::endl;
 }
 
 void add() {
-    // Add contact
+    std::cout << "Adding contact....." << std::endl;
 }
 
 int main() {
-    char *command;
+    char command[7];
 
     std::cout << "Commands: ADD, SEARCH, EXIT" << std::endl;
+    std::cin >> command;
+    if (strcmp(command, "ADD") == 0) {
+        add();
+    } else if (strcmp(command, "SEARCH") == 0) {
+        search();
+    } else if (strcmp(command, "EXIT") == 0) {
+        exit();
+    } else {
+        std::cout << "Invalid command" << std::endl;
+    }
 }

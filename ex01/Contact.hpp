@@ -4,11 +4,11 @@
 class Contact
 {
     private:
-        string first_name;
-        string last_name;
-        string nickname;
-        string phone_number;
-        string darkest_secret;
+        char *first_name;
+        char *last_name;
+        char *nickname;
+        char *phone_number;
+        char *darkest_secret;
 };
 
 #endif
