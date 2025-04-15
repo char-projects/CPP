@@ -1,5 +1,6 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+# include <iostream>
 
 void exit() {
     // Exit program
@@ -14,8 +15,7 @@ void add() {
 }
 
 int main() {
-    // PhoneBook phonebook;
-    // Contact contact;
+    char *command;
 
-    cout << "Commands: ADD, SEARCH, EXIT" << endl;
+    std::cout << "Commands: ADD, SEARCH, EXIT" << std::endl;
 }

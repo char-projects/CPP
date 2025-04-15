@@ -1,7 +1,5 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
-# include <iostream>
-using namespace std;
 
 class Contact
 {
