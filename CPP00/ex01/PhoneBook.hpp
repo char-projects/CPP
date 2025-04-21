@@ -1,10 +1,21 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include "Contact.hpp"
+# define RED "\033[0;31m"
+# define WHITE "\033[0;0m"
+
 class PhoneBook
 {
+    private:
+        Contact _contacts[8];
+        int _id;
+    
     public:
-        const char *contacts[8]; // Not sure if that's how it works  
+        PhoneBook(); // Constructor
+        // ~PhoneBook(); // Destructor
+        void search();
+        void add();
 };
 
 #endif

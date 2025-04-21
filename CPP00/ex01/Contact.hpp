@@ -1,28 +1,28 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include "phonebook.h"
+# include <string>
 
 class Contact
 {
     private:
-        char *FirstName;
-        char *LastName;
-        char *Nickname;
-        char *PhoneNumber;
-        char *DarkestSecret;
+        std::string _firstName;
+        std::string _lastName;
+        std::string _nickname;
+        std::string _phoneNumber;
+        std::string _darkestSecret;
 
     public:
-        char *getFirstName();
-        void setFirstName (char *input);
-        char *getLastName();
-        void setLastName (char *input);
-        char *getNickname();
-        void setNickname (char *input);
-        char *getPhoneNumber();
-        void setPhoneNumber (char *input);
-        char *getDarkestSecret();
-        void setDarkestSecret (char *input);
+        std::string getFirstName() const;
+        void setFirstName (std::string input);
+        std::string getLastName() const;
+        void setLastName (std::string input);
+        std::string getNickname() const;
+        void setNickname (std::string input);
+        std::string getPhoneNumber() const;
+        void setPhoneNumber (std::string input);
+        std::string getDarkestSecret() const;
+        void setDarkestSecret (std::string input);
 };
 
 #endif

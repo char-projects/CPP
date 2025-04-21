@@ -1,49 +1,40 @@
-#include "phonebook.h"
+# include "PhoneBook.hpp"
+# include <iostream>
+# include <cstring>
 
-void exit() {
-    std::cout << "Exiting program....." << std::endl;
-}
+PhoneBook::PhoneBook() {
+	this->_id = 0;
+}    
 
-void search() {
-    std::cout << ".__________________________________________________________." << std::endl;
+void PhoneBook::search() {
+    std::cout << ".══════════════════════════════════════════════════════════." << std::endl;
     std::cout << "| index | first name | last name | nickname | phone number |" << std::endl;
-    std::cout << ".__________________________________________________________." << std::endl;
+    std::cout << ".══════════════════════════════════════════════════════════." << std::endl;
 }
 
-void add() {
-    char info[999];
+void PhoneBook::add() {
+    std::string info = " ";
     
-    std::cout << "First name: ";
-    std::cin >> info;
-    // setFirstName(info);
-    std::cout << "Last name: ";
-    std::cin >> info;
-    // setLastName(info);
-    std::cout << "Nickname: ";
-    std::cin >> info;
-    // setNickname(info);
-    std::cout << "Phone number: ";
-    std::cin >> info;
-    // setPhoneNumber(info);
-    std::cout << "Darkest secret: ";
-    std::cin >> info;
-    // setDarkestSecret(info);
-    std::cout << "Contact added!" << std::endl;
-}
-
-int main() {
-    char command[7];
-
-    std::cout << "Commands: ADD, SEARCH, EXIT" << std::endl;
-    std::cout << "> ";
-    std::cin >> command;
-    if (strcmp(command, "ADD") == 0) {
-        add();
-    } else if (strcmp(command, "SEARCH") == 0) {
-        search();
-    } else if (strcmp(command, "EXIT") == 0) {
-        exit();
+    std::cout << "Id: " << this->_id << std::endl;
+    if (this->_id < 8) {
+        std::cout << "First name: ";
+        std::cin >> info;
+        // this->_contacts[_id].setFirstName(info);
+        std::cout << "Last name: ";
+        std::cin >> info;
+        // this->_contacts[_id].setLastName(info);
+        std::cout << "Nickname: ";
+        std::cin >> info;
+        // this->_contacts[_id].setNickname(info);
+        std::cout << "Phone number: ";
+        std::cin >> info;
+        // this->_contacts[_id].setPhoneNumber(info);
+        std::cout << "Darkest secret: ";
+        std::cin >> info;
+        // this->_contacts[_id].setDarkestSecret(info);
+        std::cout << "Contact added!" << std::endl;
+        this->_id++;
     } else {
-        std::cout << "Invalid command" << std::endl;
+        std::cout << "Phonebook is full, cannot add more contacts." << std::endl;
     }
 }

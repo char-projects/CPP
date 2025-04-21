@@ -1,40 +1,46 @@
-#include "phonebook.h"
+# include "PhoneBook.hpp"
+# include <iostream>
+# include <cstring>
 
-char *Contact::getFirstName() {
-    return FirstName;
+std::string Contact::getFirstName() const {
+    return _firstName;
 }
-void Contact::setFirstName (char *input){
-    char *FirstName = input;
+void Contact::setFirstName (std::string input){
+    if (input.length() < 10)
+        _firstName = input;
+    else
+        _firstName = input.substr(0, 8) + '.';
+    std::cout << "First name set to: " << _firstName << std::endl;      
 };
 
-char *Contact::getLastName() {
-    return LastName;
+std::string Contact::getLastName() const {
+    return _lastName;
 }
 
-void Contact::setLastName (char *input){
-    char *LastName = input;
+void Contact::setLastName (std::string input){
+    std::string _lastName = input;
 };
 
-char *Contact::getNickname() {
-    return Nickname;
+std::string Contact::getNickname() const {
+    return _nickname;
 }
 
-void Contact::setNickname (char *input) {
-    char *Nickname = input;
+void Contact::setNickname (std::string input) {
+    std::string _nickname = input;
 };
 
-char *Contact::getPhoneNumber() {
-    return PhoneNumber;
+std::string Contact::getPhoneNumber() const {
+    return _phoneNumber;
 }
 
-void Contact::setPhoneNumber (char *input){
-    char *PhoneNumber = input;
+void Contact::setPhoneNumber (std::string input){
+    std::string _phoneNumber = input;
 };
 
-char *Contact::getDarkestSecret() {
-    return DarkestSecret;
+std::string Contact::getDarkestSecret() const {
+    return _darkestSecret;
 }
 
-void Contact::setDarkestSecret (char *input){
-    char *DarkestSecret = input;
+void Contact::setDarkestSecret (std::string input){
+    std::string _darkestSecret = input;
 };
