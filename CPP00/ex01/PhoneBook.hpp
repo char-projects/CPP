@@ -13,7 +13,7 @@ class PhoneBook
     
     public:
         PhoneBook(); // Constructor
-        // ~PhoneBook(); // Destructor
+        ~PhoneBook(); // Destructor
         void search();
         void add();
 };

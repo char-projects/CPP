@@ -4,7 +4,9 @@
 
 PhoneBook::PhoneBook() {
 	this->_id = 0;
-}    
+}
+
+PhoneBook::~PhoneBook() {}
 
 void PhoneBook::search() {
     std::cout << ".══════════════════════════════════════════════════════════." << std::endl;
