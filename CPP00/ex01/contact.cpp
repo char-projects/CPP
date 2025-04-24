@@ -18,7 +18,11 @@ std::string Contact::getLastName() const {
 }
 
 void Contact::setLastName (std::string input){
-    std::string _lastName = input;
+    if (input.length() < 10)
+        _lastName = input;
+    else
+        _lastName = input.substr(0, 8) + '.';
+    std::cout << "Last name set to: " << _lastName << std::endl;
 };
 
 std::string Contact::getNickname() const {
@@ -26,7 +30,11 @@ std::string Contact::getNickname() const {
 }
 
 void Contact::setNickname (std::string input) {
-    std::string _nickname = input;
+    if (input.length() < 10)
+        _nickname = input;
+    else
+        _nickname = input.substr(0, 8) + '.';
+    std::cout << "Nickname set to: " << _nickname << std::endl;
 };
 
 std::string Contact::getPhoneNumber() const {
@@ -34,7 +42,11 @@ std::string Contact::getPhoneNumber() const {
 }
 
 void Contact::setPhoneNumber (std::string input){
-    std::string _phoneNumber = input;
+    if (input.length() < 10)
+        _phoneNumber = input;
+    else
+        _phoneNumber = input.substr(0, 8) + '.';
+    std::cout << "Phone number set to: " << _phoneNumber << std::endl;
 };
 
 std::string Contact::getDarkestSecret() const {
@@ -42,5 +54,9 @@ std::string Contact::getDarkestSecret() const {
 }
 
 void Contact::setDarkestSecret (std::string input){
-    std::string _darkestSecret = input;
+    if (input.length() < 10)
+        _darkestSecret = input;
+    else
+        _darkestSecret = input.substr(0, 8) + '.';
+    std::cout << "Darkest secret set to: " << _darkestSecret << std::endl;
 };
