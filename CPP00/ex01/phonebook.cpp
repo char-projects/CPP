@@ -13,7 +13,7 @@ void PhoneBook::search() {
     std::cout << "+═══════════════════════════════════════════+" << std::endl;
     std::cout << "|     index| firstname| last name|  nickname|" << std::endl;
     std::cout << "+═══════════════════════════════════════════+" << std::endl;
-    while (i < this->_id) { 
+    while (i < this->_id && this->_id < 8 && i < 8) {
         std::cout << "|         " << i << "| ";
         std::cout << this->_contacts[i].getFirstName() << "| ";
         std::cout << this->_contacts[i].getLastName() << "| ";
@@ -32,14 +32,13 @@ void PhoneBook::search() {
     }
     else {
         do {
-            std::cout << RED "Search for index: " WHITE;
+            std::cout << PURPLE "Search for index: " WHITE;
             std::getline(std::cin, index);
             if (index.empty() || index.length() != 1 || (index[0] - '0') >= i || index[0] < '0' || index[0] > '8') {
-                std::cout << "Invalid index" << std::endl;
+                std::cout << RED "Invalid index" WHITE << std::endl;
             }
         } while (index.empty() || index.length() != 1 || (index[0] - '0') >= i || index[0] < '0' || index[0] > '8');
         int id = index[0] - '0';
-        // SHOULD THE INPUT BE TRUNCATED HERE TOO??? IF NOT, DON'T RIGHT-ALIGN IT
         std::cout << "+───────────────────────────+" << std::endl;
         std::cout << "| Index:                  " << id << " |" << std::endl;
         std::cout << "| First name:     " << this->_contacts[id].getFirstName() << " |" << std::endl;
@@ -48,7 +47,7 @@ void PhoneBook::search() {
         std::cout << "| Phone number:   " << this->_contacts[id].getPhoneNumber() << " |" << std::endl;
         std::cout << "| Darkest secret: " << this->_contacts[id].getDarkestSecret() << " |" << std::endl;
         std::cout << "+───────────────────────────+" << std::endl;
-        std::cout << "Contact found!" << std::endl;
+        std::cout << GREEN "Contact found!" WHITE << std::endl;
     }
 }
 
@@ -62,17 +61,32 @@ std::string PhoneBook::validateInput(const std::string& prompt) {
 }
 
 void PhoneBook::add() {
-    int temp = this->_id;
+    int temp = this->_id % 8;
     if (this->_id >= 8) {
-        std::cout << "Phonebook is full, overwriting the oldest contact." << std::endl;
-        temp = this->_id % 8;
+        std::cout << "Phonebook is full, overwriting the contact at index " << temp << std::endl;
     }
     std::cout << "Id: " << temp << std::endl;
     this->_contacts[temp].setFirstName(this->validateInput("Enter first name: "));
     this->_contacts[temp].setLastName(this->validateInput("Enter last name: "));
     this->_contacts[temp].setNickname(this->validateInput("Enter nickname: "));
-    this->_contacts[temp].setPhoneNumber(this->validateInput("Enter phone number: "));
+    std::string info;
+    while (true) {
+        std::cout << "Enter phone number: ";
+        std::getline(std::cin, info);
+        bool isValid = true;
+        for (size_t i = 0; i < info.size(); i++) {
+            if (info[i] < '0' || info[i] > '9') {
+                std::cout << RED "Phone number has to be a number!" WHITE << std::endl;
+                isValid = false;
+                break;
+            }
+        }
+        if (isValid && !info.empty()) {
+            this->_contacts[temp].setPhoneNumber(info);
+            break;
+        }
+    }
     this->_contacts[temp].setDarkestSecret(this->validateInput("Enter darkest secret: "));
+    std::cout << GREEN "Contact added!" WHITE << std::endl;
     this->_id++;
-    std::cout << "Contact added successfully!" << std::endl;
 }

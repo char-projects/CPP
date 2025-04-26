@@ -3,6 +3,9 @@
 
 # include "Contact.hpp"
 # define RED "\033[0;31m"
+# define PURPLE "\033[0;35m"
+# define GREEN "\033[0;32m"
+
 # define WHITE "\033[0;0m"
 
 class PhoneBook
