@@ -4,9 +4,12 @@
 
 PhoneBook::PhoneBook() {
 	this->_id = 0;
+    std::cout << "Constructor called, creating phonebook..." << std::endl;
 }
 
-PhoneBook::~PhoneBook() {}
+PhoneBook::~PhoneBook() {
+    std::cout << "Destructor called, destroying phonebook..." << std::endl;
+}
 
 void PhoneBook::search() {
     int i = 0;
@@ -19,10 +22,10 @@ void PhoneBook::search() {
         std::cout << this->_contacts[i].getLastName() << "| ";
         std::cout << this->_contacts[i].getNickname() << "| ";
         std::cout << std::endl;
-        if (this->_id == this->_id - 1)
-            std::cout << "|───────────────────────────────────────────|" << std::endl;
-        else
+        if (i == this->_id - 1 || i == 7)
             std::cout << "+───────────────────────────────────────────+" << std::endl;
+        else
+            std::cout << "|───────────────────────────────────────────|" << std::endl;
         i++;
     }
     std::string index;
