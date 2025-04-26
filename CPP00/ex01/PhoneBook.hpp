@@ -15,6 +15,7 @@ class PhoneBook
         PhoneBook(); // Constructor
         ~PhoneBook(); // Destructor
         void search();
+        std::string validateInput(const std::string& prompt);
         void add();
 };
 
