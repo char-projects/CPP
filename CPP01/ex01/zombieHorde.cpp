@@ -2,11 +2,11 @@
 
 Zombie* zombieHorde( int N, std::string name )
 {
+    Zombie *horde[N];
     while (N-- > 0)
     {
-        Zombie* horde = new Zombie(name);
-        horde->announce();
-        delete horde;
+        horde[N] = new Zombie(name );
+        horde[N]->announce();
     }
-    return (NULL);
+    return (*horde);
 }

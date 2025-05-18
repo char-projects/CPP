@@ -1,6 +1,7 @@
 # include "PhoneBook.hpp"
 # include <iostream>
 # include <cstring>
+# include <cstdlib>
 
 PhoneBook::PhoneBook() {
 	this->_id = 0;
@@ -37,6 +38,10 @@ void PhoneBook::search() {
         do {
             std::cout << PURPLE "Search for index: " WHITE;
             std::getline(std::cin, index);
+            if (std::cin.eof()) {
+                std::cout << "Exiting program..." << std::endl;
+                exit(0);
+            }
             if (index.empty() || index.length() != 1 || (index[0] - '0') >= i || index[0] < '0' || index[0] > '8') {
                 std::cout << RED "Invalid index" WHITE << std::endl;
             }
@@ -59,6 +64,10 @@ std::string PhoneBook::validateInput(const std::string& prompt) {
     do {
         std::cout << prompt;
         std::getline(std::cin, input);
+        if (std::cin.eof()) {
+            std::cout << "Exiting program..." << std::endl;
+            exit(0);
+        }
     } while (input.empty());
     return input;
 }
