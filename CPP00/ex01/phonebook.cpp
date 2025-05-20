@@ -17,7 +17,7 @@ void PhoneBook::search() {
     std::cout << "+═══════════════════════════════════════════+" << std::endl;
     std::cout << "|     index| firstname| last name|  nickname|" << std::endl;
     std::cout << "+═══════════════════════════════════════════+" << std::endl;
-    while (i < this->_id && this->_id < 8 && i < 8) {
+    while (i < this->_id && i < 8) {
         std::cout << "|         " << i << "| ";
         std::cout << this->_contacts[i].getFirstName() << "| ";
         std::cout << this->_contacts[i].getLastName() << "| ";

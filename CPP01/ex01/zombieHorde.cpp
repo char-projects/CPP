@@ -1,12 +1,13 @@
-#include "Zombie.hpp"
+#include "Zombie.h"
+#include <sstream>
 
-Zombie* zombieHorde( int N, std::string name )
+Zombie *zombieHorde( int N, std::string name )
 {
-    Zombie *horde[N];
-    while (N-- > 0)
-    {
-        horde[N] = new Zombie(name );
-        horde[N]->announce();
+    Zombie *horde = new Zombie[N];
+    for (int i = 0; i < N; i++) {
+        std::ostringstream oss;
+        oss << name << (N - i);
+        horde[i].setName(oss.str());
     }
-    return (*horde);
+    return (horde);
 }

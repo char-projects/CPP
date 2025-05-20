@@ -1,4 +1,4 @@
-#include "Zombie.hpp"
+#include "Zombie.h"
 
 int main() {
     Zombie* zombie = newZombie("Heap_Zombie");

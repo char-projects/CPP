@@ -1,11 +1,11 @@
-#include "Zombie.hpp"
+#include "Zombie.h"
 
 Zombie::Zombie(std::string name) : name(name) {
-    std::cout << "Zombie " << this->name << " created" << std::endl;
+    std::cout << this->name << " created" << std::endl;
 }
 
 Zombie::~Zombie() {
-    std::cout << "Zombie " << this->name << " destroyed" << std::endl;
+    std::cout << this->name << " destroyed" << std::endl;
 }
 
 void Zombie::announce( void ) {
