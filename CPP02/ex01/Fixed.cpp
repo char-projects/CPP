@@ -2,50 +2,60 @@
 
 const int Fixed::_fractionalBits = 8;
 
-Fixed::Fixed() : _rawBits(0) {
-    // Default constructor
+Fixed::Fixed() {
+    std::cout << "Default constructor called" << std::endl;
+    _rawBits = 0;
 }
 
-Fixed::Fixed(const Fixed &other) : _rawBits(other.getRawBits()) {
-    // Copy constructor
+Fixed::Fixed(const Fixed &other){
+    std::cout << "Copy constructor called" << std::endl;
+    _rawBits = other.getRawBits();
 }
 
+// Convert integer to fixed-point
 Fixed::Fixed(const int value) {
-    _rawBits = value << _fractionalBits; // Convert integer to fixed-point
+    std::cout << "Int constructor called" << std::endl;
+    _rawBits = value * 256;
 }
 
+// Convert float to fixed-point
 Fixed::Fixed(const float value) {
-    _rawBits = static_cast<int>(value * (1 << _fractionalBits)); // Convert float to fixed-point
+    std::cout << "Float constructor called" << std::endl;
+    _rawBits = roundf(value * 256);
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
+    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other) {
-        _rawBits = other.getRawBits();
+		this->_rawBits = other.getRawBits();
     }
     return *this;
 }
 
-Fixed::~Fixed() {
-    // Destructor
+// Output the floating-point representation
+std::ostream &operator<<(std::ostream &output, const Fixed &value) {
+	return (output << value.toFloat());
 }
 
-int Fixed::getRawBits(void) const {
-    return _rawBits;
+int Fixed::getRawBits( void ) const {
+    return this->_rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-    _rawBits = raw;
+    this->_rawBits = raw;
+    return ;
 }
 
+// Convert fixed-point to float
 float Fixed::toFloat(void) const {
-    return static_cast<float>(_rawBits) / (1 << _fractionalBits); // Convert fixed-point to float
+    return (float)_rawBits / 256;
 }
 
+// Convert fixed-point to integer
 int Fixed::toInt(void) const {
-    return _rawBits >> _fractionalBits; // Convert fixed-point to integer
+    return _rawBits / 256;
 }
 
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
-    os << fixed.toFloat(); // Output the floating-point representation
-    return os;
+Fixed::~Fixed() {
+    std::cout << "Default destructor called" << std::endl;
 }

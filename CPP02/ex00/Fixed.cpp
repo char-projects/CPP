@@ -22,10 +22,6 @@ Fixed &Fixed::operator=(const Fixed &other) {
     return *this;
 }
 
-Fixed::~Fixed() {
-    std::cout << "Default destructor called" << std::endl;
-}
-
 int Fixed::getRawBits( void ) const {
     std::cout << "getRawBits member function called" << std::endl;
     return this->_rawBits;
@@ -37,3 +33,6 @@ void Fixed::setRawBits(int const raw) {
     return ;
 }
 
+Fixed::~Fixed() {
+    std::cout << "Default destructor called" << std::endl;
+}
