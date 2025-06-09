@@ -4,7 +4,6 @@
 #include <iostream>
 
 class ClapTrap {
-  // Classes who inherit from ClapTrap will have access to these members
   protected:
     std::string _name;
     int _hitPoints;
