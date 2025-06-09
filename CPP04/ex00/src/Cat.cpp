@@ -1,4 +1,4 @@
-#include "include/Cat.hpp"
+#include "../include/Cat.hpp"
 
 Cat::Cat() {
     type = "Cat";

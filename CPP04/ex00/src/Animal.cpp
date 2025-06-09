@@ -1,4 +1,4 @@
-#include "include/Animal.hpp"
+#include "../include/Animal.hpp"
 
 Animal::Animal() : type("Owl") {
     std::cout << "Animal default constructor called" << std::endl;

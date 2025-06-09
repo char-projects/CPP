@@ -1,14 +1,14 @@
 NAME					=	Animal
 
-SRC						=	main.cpp Dog.cpp Cat.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
+SRC						=	src/main.cpp src/Dog.cpp src/Cat.cpp src/Animal.cpp src/WrongAnimal.cpp src/WrongCat.cpp
 
-OBJ 					= 	$(SRC:.cpp=.o)
+OBJ 					= 	$(SRC:src/%.cpp=%.o)
 OBJ_DIR					=	obj
 OBJ_FILES				=	$(addprefix $(OBJ_DIR)/, $(OBJ))
 
-CFLAGS					=	-Werror -Wextra -Wall -std=c++98
+CFLAGS					=	-Werror -Wextra -Wall -std=c++98 -Iinclude
 
-$(OBJ_DIR)/%.o			: 	%.cpp
+$(OBJ_DIR)/%.o			: 	src/%.cpp
 							@mkdir -p $(OBJ_DIR)
 							c++ $(CFLAGS) -c $< -o $@
 
