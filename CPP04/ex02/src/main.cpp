@@ -5,9 +5,9 @@ int main() {
     std::cout << "─────────────────────────────────" << std::endl;
     std::cout << "Test 1:" << std::endl;
     std::cout << "─────────────────────────────────" << std::endl;
-    const Animal* k = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    const AAnimal* k = new AAnimal();
+    const AAnimal* j = new Dog();
+    const AAnimal* i = new Cat();
     std::cout << "─────────────────────────────────" << std::endl;
     std::cout << "Animal type: " << k->getType() << " " << std::endl << "Sound: ";
     k->makeSound();
@@ -25,7 +25,7 @@ int main() {
     std::cout << "Test 2:" << std::endl;
     std::cout << "─────────────────────────────────" << std::endl;
 
-    Animal *animals[6];
+    AAnimal *animals[6];
     for (int i = 0; i < 3; ++i) {
         animals[i] = new Dog();
         animals[i + 3] = new Cat();
