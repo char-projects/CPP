@@ -1,6 +1,6 @@
-NAME					=	AAnimal
+NAME					=	Interface
 
-SRC						=	src/main.cpp src/Dog.cpp src/Cat.cpp src/AAnimal.cpp src/Brain.cpp
+SRC						=	src/main.cpp src/AMateria.cpp src/Character.cpp src/Cure.cpp src/Ice.cpp src/Materia.cpp src/MateriaSource.cpp
 
 OBJ 					= 	$(SRC:src/%.cpp=%.o)
 OBJ_DIR					=	obj

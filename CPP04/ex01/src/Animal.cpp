@@ -17,10 +17,8 @@ std::string Animal::getType() const {
 }
 
 Animal &Animal::operator=(const Animal &other) {
-    if (this != &other) {
-        type = other.type;
-        std::cout << "Animal assigned" << std::endl;
-    }
+    type = other.type;
+    std::cout << "Animal assigned" << std::endl;
     return *this;
 }
 

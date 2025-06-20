@@ -8,7 +8,7 @@ class Dog : public Animal {
         Dog();
         Dog(const Dog &other);
         Dog &operator=(const Dog &other);
-        void makeSound() const; // Override the pure virtual function
+        void makeSound() const;
         virtual ~Dog();
 };
 

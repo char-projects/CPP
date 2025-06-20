@@ -17,10 +17,8 @@ std::string WrongAnimal::getType() const {
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other) {
-    if (this != &other) {
-        type = other.type;
-        std::cout << "WrongAnimal assignment operator called" << std::endl;
-    }
+    this->type = other.type;
+    std::cout << "WrongAnimal assignment operator called" << std::endl;
     return *this;
 }
 

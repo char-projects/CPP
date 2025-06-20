@@ -5,19 +5,19 @@ int main() {
     std::cout << "─────────────────────────────────" << std::endl;
     std::cout << "Test 1:" << std::endl;
     std::cout << "─────────────────────────────────" << std::endl;
-    const AAnimal* k = new AAnimal();
+    // const AAnimal* k = new AAnimal();
     const AAnimal* j = new Dog();
     const AAnimal* i = new Cat();
     std::cout << "─────────────────────────────────" << std::endl;
-    std::cout << "Animal type: " << k->getType() << " " << std::endl << "Sound: ";
-    k->makeSound();
+    // ::cout << "Animal type: " << k->getType() << " " << std::endl << "Sound: ";
+    // k->makeSound();
     std::cout << "Animal type: " << j->getType() << " " << std::endl << "Sound: ";
     j->makeSound();
     std::cout << "Animal type: " << i->getType() << " " << std::endl << "Sound: ";
     i->makeSound();
     std::cout << "─────────────────────────────────" << std::endl;
     std::cout << "─────────────────────────────────" << std::endl;
-    delete k;
+    // delete k;
     delete j; //should not create a leak
     delete i;
 

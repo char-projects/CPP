@@ -11,10 +11,8 @@ Cat::Cat(const Cat &other) : AAnimal(other) {
 }
 
 Cat &Cat::operator=(const Cat &other) {
-    if (this != &other) {
-        AAnimal::operator=(other);
-        std::cout << "Cat assigned" << std::endl;
-    }
+    this->type = other.type;
+    std::cout << "Cat assigned" << std::endl;
     return *this;
 }
 

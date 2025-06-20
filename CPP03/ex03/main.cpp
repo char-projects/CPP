@@ -12,7 +12,7 @@ int main() {
     ClapTrap clap1("Harry"); // Hit points: 10, Energy Points: 9, Attack Damage: 0
     ScavTrap scav1("Ron"); // Hit points: 100, Energy Points: 50, Attack Damage: 20
     FragTrap frag1("Hermione"); // Hit points: 100, Energy Points: 100, Attack Damage: 30
-    DiamondTrap diamond("Dumbledore"); // DiamondTrap inherits from FragTrap and ScavTrap
+    DiamondTrap diamond("Neville"); // DiamondTrap inherits from FragTrap and ScavTrap
     ClapTrap clap2(clap1); // Copy constructor
     ClapTrap clap3; // Default constructor
     clap3 = clap1; // Assignment operator

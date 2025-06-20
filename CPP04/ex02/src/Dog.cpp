@@ -11,10 +11,8 @@ Dog::Dog(const Dog &other) : AAnimal(other) {
 }
 
 Dog &Dog::operator=(const Dog &other) {
-    if (this != &other) {
-        AAnimal::operator=(other);
-        std::cout << "Dog assigned" << std::endl;
-    }
+    this->type = other.type;
+    std::cout << "Dog assigned" << std::endl;
     return *this;
 }
 

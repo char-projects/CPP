@@ -22,10 +22,6 @@ AAnimal &AAnimal::operator=(const AAnimal &other) {
     return *this;
 }
 
-void AAnimal::makeSound() const {
-    std::cout << "* High-pitched screeching sound *" << std::endl;
-}
-
 AAnimal::~AAnimal() {
     std::cout << "Animal destroyed" << std::endl;
 }
