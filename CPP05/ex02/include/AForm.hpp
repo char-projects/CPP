@@ -1,19 +1,19 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 
-class Form {
+class AForm {
     private:
         const std::string _name;
         bool _signed;
         const int _signGrade;
         const int _executeGrade;
     public:
-        Form();
-        Form(const std::string &name, int signGrade, int executeGrade);
-        Form(const Form &other);
-        Form &operator=(const Form &other);
+        AForm();
+        AForm(const std::string &name, int signGrade, int executeGrade);
+        AForm(const AForm &other);
+        AForm &operator=(const AForm &other);
         int getSignGrade() const;
         int getExecuteGrade() const;
         bool isSigned() const;  
@@ -29,9 +29,9 @@ class Form {
             public:
                 virtual const char* what() const throw();
         }; 
-        virtual ~Form();   
+        virtual ~AForm();   
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &form);
+std::ostream &operator<<(std::ostream &os, const AForm &form);
 
 #endif

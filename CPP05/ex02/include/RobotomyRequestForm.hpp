@@ -1,19 +1,19 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
 
-class Form {
+class RobotomyRequestForm {
     private:
         const std::string _name;
         bool _signed;
         const int _signGrade;
         const int _executeGrade;
     public:
-        Form();
-        Form(const std::string &name, int signGrade, int executeGrade);
-        Form(const Form &other);
-        Form &operator=(const Form &other);
+        RobotomyRequestForm();
+        RobotomyRequestForm(const std::string &name, int signGrade, int executeGrade);
+        RobotomyRequestForm(const RobotomyRequestForm &other);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
         int getSignGrade() const;
         int getExecuteGrade() const;
         bool isSigned() const;  
@@ -29,9 +29,9 @@ class Form {
             public:
                 virtual const char* what() const throw();
         }; 
-        virtual ~Form();   
+        virtual ~RobotomyRequestForm();   
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &form);
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form);
 
 #endif

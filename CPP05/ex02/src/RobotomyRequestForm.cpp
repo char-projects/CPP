@@ -1,9 +1,9 @@
-#include "../include/Form.hpp"
+#include "../include/RobotomyRequestForm.hpp"
 #include "../include/Bureaucrat.hpp"
 
-Form::Form() : _name(""), _signGrade(150), _executeGrade(150) {}
+RobotomyRequestForm::RobotomyRequestForm() : _name(""), _signGrade(72), _executeGrade(45) {}
 
-Form::Form(const std::string &name, int signGrade, int executeGrade)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &name, int signGrade, int executeGrade)
     : _name(name), _signed(false), _signGrade(signGrade), _executeGrade(executeGrade) {
     if (signGrade < 1 || executeGrade < 1)
         throw GradeTooHighException();
@@ -11,26 +11,26 @@ Form::Form(const std::string &name, int signGrade, int executeGrade)
         throw GradeTooLowException();
 }
 
-Form::Form(const Form &other)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
     : _name(other._name), _signed(other._signed), _signGrade(other._signGrade), 
       _executeGrade(other._executeGrade) {}
 
-Form &Form::operator=(const Form &other) {
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
     if (this != &other) {
         _signed = other._signed;
     }
     return *this;
 }
 
-const char* Form::GradeTooHighException::what() const throw() {
+const char* RobotomyRequestForm::GradeTooHighException::what() const throw() {
 	return "Grade is too high";
 }
 
-const char* Form::GradeTooLowException::what() const throw() {
+const char* RobotomyRequestForm::GradeTooLowException::what() const throw() {
 	return "Grade is too low";
 }
 
-std::ostream &operator<<(std::ostream &os, const Form &form) {
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form) {
     os << "Form: " << form.getName()
     << ", Signed: " << (form.isSigned() ? "Yes" : "No")
     << ", Sign Grade: " << form.getSignGrade()
@@ -38,26 +38,26 @@ std::ostream &operator<<(std::ostream &os, const Form &form) {
     return os;
 }
 
-void Form::beSigned(const Bureaucrat &bureaucrat) {
+void RobotomyRequestForm::beSigned(const Bureaucrat &bureaucrat) {
     if (bureaucrat.getGrade() > _signGrade)
         throw GradeTooLowException();
     _signed = true;
 }
 
-const std::string &Form::getName() const {
+const std::string &RobotomyRequestForm::getName() const {
     return _name;
 }
 
-bool Form::isSigned() const {
+bool RobotomyRequestForm::isSigned() const {
     return _signed;
 }
 
-int Form::getSignGrade() const {
+int RobotomyRequestForm::getSignGrade() const {
     return _signGrade;
 }
 
-int Form::getExecuteGrade() const {
+int RobotomyRequestForm::getExecuteGrade() const {
     return _executeGrade;
 }
 
-Form::~Form() {}
+RobotomyRequestForm::~RobotomyRequestForm() {}

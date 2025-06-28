@@ -1,19 +1,19 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 
-class Form {
+class PresidentialPardonForm {
     private:
         const std::string _name;
         bool _signed;
         const int _signGrade;
         const int _executeGrade;
     public:
-        Form();
-        Form(const std::string &name, int signGrade, int executeGrade);
-        Form(const Form &other);
-        Form &operator=(const Form &other);
+        PresidentialPardonForm ();
+        PresidentialPardonForm (const std::string &name, int signGrade, int executeGrade);
+        PresidentialPardonForm (const PresidentialPardonForm &other);
+        PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
         int getSignGrade() const;
         int getExecuteGrade() const;
         bool isSigned() const;  
@@ -29,9 +29,9 @@ class Form {
             public:
                 virtual const char* what() const throw();
         }; 
-        virtual ~Form();   
+        virtual ~PresidentialPardonForm ();   
 };
 
-std::ostream &operator<<(std::ostream &os, const Form &form);
+std::ostream &operator<<(std::ostream &os, const PresidentialPardonForm &form);
 
 #endif
