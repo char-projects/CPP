@@ -2,35 +2,51 @@
 
 void ScalarConverter::convert(std::string literal) {
     std::cout << "Converting: " << literal << std::endl;
-    std::cout << "...to char: " << literal << std::endl;
-    std::cout << "...to int: " << std::endl;
-    std::cout << "...to float: " << std::endl;
-    std::cout << "...to double: " << std::endl;
-}
 
-bool ScalarConverter::isInt(const std::string &literal) {
+    if (literal == "nan" || literal == "nanf") {
+		std::cout << "char: impossible" << std::endl; 
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+	else if (literal == "+inf" || literal == "+inff") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+	else if (literal == "-inf" || literal == "-inff") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+
+    char *type = NULL;
+    // Check if it's a char
     if (literal.empty()) {
-        return false;
+        type = "i";
     }
     for (size_t i = 0; i < literal.length(); ++i) {
         if (i == 0 && (literal[i] == '-' || literal[i] == '+')) {
             continue;
         }
         if (!isdigit(literal[i])) {
-            return false;
+            break ;
         }
     }
-    return true;
-}
+    type = "i";
 
-bool ScalarConverter::isChar(const std::string &literal) {
-    return literal.length() == 1 && isprint(literal[0]);
-}
+    // Check if it's an int
+    if (literal.length() == 1 && isprint(literal[0]))
+        type = "c";
 
-bool ScalarConverter::isFloat(const std::string &literal) {
-    if (literal.empty()) {
-        return false;
+    // Check if it's a float
+    if (literal.find('.') != std::string::npos) {
+        type = "f";
     }
+
+    // Check if it's a double
     bool decimalPointFound = false;
     for (size_t i = 0; i < literal.length(); ++i) {
         if (i == 0 && (literal[i] == '-' || literal[i] == '+')) {
@@ -38,37 +54,32 @@ bool ScalarConverter::isFloat(const std::string &literal) {
         }
         if (literal[i] == '.') {
             if (decimalPointFound) {
-                return false;
+                break ;
             }
             decimalPointFound = true;
             continue;
         }
         if (!isdigit(literal[i])) {
-            return false;
+            break ;
         }
     }
-    return decimalPointFound;
+    type = "d";
 }
 
-bool ScalarConverter::isDouble(const std::string &literal) {
-    if (literal.empty()) {
-        return false;
-    }
-    bool decimalPointFound = false;
-    for (size_t i = 0; i < literal.length(); ++i) {
-        if (i == 0 && (literal[i] == '-' || literal[i] == '+')) {
-            continue;
-        }
-        if (literal[i] == '.') {
-            if (decimalPointFound) {
-                return false;
-            }
-            decimalPointFound = true;
-            continue;
-        }
-        if (!isdigit(literal[i])) {
-            return false;
-        }
-    }
-    return decimalPointFound;
+void ScalarConverter::convertInt(const std::string &literal) {
+    int value = std::stoi(literal);
+    std::cout << "int: " << value << std::endl;
+    std::cout << "int: impossible" << std::endl;
+}
+
+void ScalarConverter::convertChar(const std::string &literal) {
+    std::cout << "char: Non displayable" << std::endl;
+}
+
+void ScalarConverter::convertDouble(const std::string &literal) {
+    std::cout << "double: impossible" << std::endl;
+}
+
+void ScalarConverter::convertFloat(const std::string &literal) {
+    std::cout << "float: impossible" << std::endl;
 }
