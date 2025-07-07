@@ -2,6 +2,13 @@
 #define AFORM_HPP
 
 #include <iostream>
+#include <string>
+#include <exception>
+#include <cstdlib>
+#include <ctime>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm {
     private:
@@ -20,6 +27,7 @@ class AForm {
         const std::string &getName() const; 
 
         void beSigned(const class Bureaucrat &bureaucrat);
+        virtual void execute(const Bureaucrat& executor) const = 0;
         
         class GradeTooHighException : public std::exception {
             public:

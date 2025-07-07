@@ -2,7 +2,11 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <string>
+#include <exception>
 #include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat {
     private:
@@ -19,7 +23,7 @@ class Bureaucrat {
 
         void incrementGrade();
         void decrementGrade();
-        void signForm(AForm &form) const;
+        void signForm(AForm &form);
         void executeForm(const AForm &form);
 
         class GradeTooHighException : public std::exception {
