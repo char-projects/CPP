@@ -7,7 +7,7 @@
 class Bureaucrat {
     private:
         const std::string name;
-        int grade; // From 1 (highest) to 150 (lowest)
+        int grade;
     public:
         Bureaucrat();
         Bureaucrat(const std::string &name, int grade);
@@ -20,6 +20,7 @@ class Bureaucrat {
         void incrementGrade();
         void decrementGrade();
         void signForm(AForm &form) const;
+        void executeForm(const AForm &form);
 
         class GradeTooHighException : public std::exception {
             public:

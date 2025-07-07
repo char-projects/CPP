@@ -2,7 +2,7 @@
 #include "../include/Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("Shrubbery Creation", 145, 137), _target("Default") {}
+    : AForm("Shrubbery Creation", 145, 137), _target("") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
     : AForm("Shrubbery Creation", 145, 137), _target(target) {}
@@ -26,11 +26,14 @@ std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm &form) {
     return os;
 }
 
-void ShrubberyCreationForm::shrubberyCreation() const {
-    // if (!_signed)
-    //    throw GradeTooLowException();
-
+void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
     std::cout << "Creating shrubbery for " << _target << "..." << std::endl;
+    if (!isSigned())
+        throw FormNotSignedException();
+
+    if (executor.getGrade() > getExecuteGrade())
+        throw GradeTooLowException();
+
     std::ofstream file((_target + "_shrubbery").c_str());
     if (file.is_open()) {
         file << "             ,@@@@@@@," << std::endl;

@@ -2,7 +2,7 @@
 #include "../include/Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm() 
-    : AForm("Presidential Pardon", 25, 5) {}
+    : AForm("Presidential Pardon", 25, 5), _target("") {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
     : AForm("Presidential Pardon", 25, 5), _target(target) {}
@@ -16,6 +16,16 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
         _target = other._target;
     }
     return *this;
+}
+
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
+    if (!isSigned()) {
+        throw FormNotSignedException();
+    }
+    if (executor.getGrade() > getExecuteGrade()) {
+        throw GradeTooLowException();
+    }
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
