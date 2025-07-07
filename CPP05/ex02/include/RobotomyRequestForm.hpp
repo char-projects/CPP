@@ -1,37 +1,19 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 
-class RobotomyRequestForm {
+class RobotomyRequestForm : public AForm {
     private:
-        const std::string _name;
-        bool _signed;
-        const int _signGrade;
-        const int _executeGrade;
+        std::string _target;
+
     public:
         RobotomyRequestForm();
-        RobotomyRequestForm(const std::string &name, int signGrade, int executeGrade);
+        RobotomyRequestForm(const std::string &target);
         RobotomyRequestForm(const RobotomyRequestForm &other);
         RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
-        int getSignGrade() const;
-        int getExecuteGrade() const;
-        bool isSigned() const;  
-        const std::string &getName() const; 
-
-        void beSigned(const class Bureaucrat &bureaucrat);
-        
-        class GradeTooHighException : public std::exception {
-            public:
-                virtual const char* what() const throw();
-        };
-        class GradeTooLowException : public std::exception {
-            public:
-                virtual const char* what() const throw();
-        }; 
-        virtual ~RobotomyRequestForm();   
+        ~RobotomyRequestForm();   
 };
-
-std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &form);
 
 #endif

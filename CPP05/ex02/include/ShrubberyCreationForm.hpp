@@ -1,39 +1,21 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
+#include "AForm.hpp"
 #include <iostream>
 #include <fstream>
 
-class ShrubberyCreationForm {
+class ShrubberyCreationForm : public AForm {
     private:
-        const std::string _name;
-        bool _signed;
-        const int _signGrade;
-        const int _executeGrade;
+        std::string _target;
+        
     public:
         ShrubberyCreationForm();
-        ShrubberyCreationForm(const std::string &name, int signGrade, int executeGrade);
+        ShrubberyCreationForm(const std::string &target);
         ShrubberyCreationForm(const ShrubberyCreationForm &other);
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
-        int getSignGrade() const;
-        int getExecuteGrade() const;
-        bool isSigned() const;  
-        const std::string &getName() const; 
-
-        void beSigned(const class Bureaucrat &bureaucrat);
+        ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other); 
         void shrubberyCreation() const;
-        
-        class GradeTooHighException : public std::exception {
-            public:
-                virtual const char* what() const throw();
-        };
-        class GradeTooLowException : public std::exception {
-            public:
-                virtual const char* what() const throw();
-        }; 
-        virtual ~ShrubberyCreationForm();   
+        ~ShrubberyCreationForm();   
 };
-
-std::ostream &operator<<(std::ostream &os, const ShrubberyCreationForm &form);
 
 #endif
