@@ -1,17 +1,16 @@
 #ifndef SCALARCONVERTER
 #define SCALARCONVERTER
 
+#include <climits>
+#include <cmath>
 #include <iostream>
+#include <limits>
 #include <sstream>
 
-class ScalarConverter {
-    public:
-        static void convert(std::string literal);
-
-        void convertInt(const std::string &literal);
-        void convertChar(const std::string &literal);
-        void convertFloat(const std::string &literal);
-        void convertDouble(const std::string &literal);
+class ScalarConverter
+{
+  public:
+	static void convert(std::string literal);
 };
 
 #endif

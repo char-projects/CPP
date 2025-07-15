@@ -33,7 +33,61 @@ void ScalarConverter::convert(std::string literal) {
         std::cout << "double: " << static_cast<double>(literal[0]) << std::endl;
     }
 
-    // Check if it's a float or double
+    // Check if it's a float
+    else if (literal.find('.') != std::string::npos && literal[literal.length() - 1] == 'f') {
+        type = 'f';
+        std::string floatLiteral = literal.substr(0, literal.length() - 1); // Remove 'f'
+        std::istringstream iss(floatLiteral);
+        float floatValue;
+        if (!(iss >> floatValue) || !iss.eof()) {
+            std::cout << "char: impossible" << std::endl;
+            std::cout << "int: impossible" << std::endl;
+            std::cout << "float: impossible" << std::endl;
+            std::cout << "double: impossible" << std::endl;
+        } else {
+            if (floatValue < 0 || floatValue > 127 || std::isnan(floatValue))
+                std::cout << "char: impossible" << std::endl;
+            else if (!isprint(static_cast<int>(floatValue)))
+                std::cout << "char: Non displayable" << std::endl;
+            else
+                std::cout << "char: '" << static_cast<char>(floatValue) << "'" << std::endl;
+            if (floatValue < static_cast<float>(INT_MIN) || floatValue > static_cast<float>(INT_MAX) || std::isnan(floatValue))
+                std::cout << "int: impossible" << std::endl;
+            else
+                std::cout << "int: " << static_cast<int>(floatValue) << std::endl;
+            std::cout << "float: " << floatValue << "f" << std::endl;
+            std::cout << "double: " << static_cast<double>(floatValue) << std::endl;
+        }
+    }
+
+    // Check if it's a double
+    else if (literal.find('.') != std::string::npos) {
+        type = 'd';
+        std::istringstream iss(literal);
+        double doubleValue;
+        if (!(iss >> doubleValue) || !iss.eof()) {
+            std::cout << "char: impossible" << std::endl;
+            std::cout << "int: impossible" << std::endl;
+            std::cout << "float: impossible" << std::endl;
+            std::cout << "double: impossible" << std::endl;
+        } else {
+            if (doubleValue < 0 || doubleValue > 127 || std::isnan(doubleValue))
+                std::cout << "char: impossible" << std::endl;
+            else if (!isprint(static_cast<int>(doubleValue)))
+                std::cout << "char: Non displayable" << std::endl;
+            else
+                std::cout << "char: '" << static_cast<char>(doubleValue) << "'" << std::endl;
+            if (doubleValue < static_cast<double>(INT_MIN) || doubleValue > static_cast<double>(INT_MAX) || std::isnan(doubleValue))
+                std::cout << "int: impossible" << std::endl;
+            else
+                std::cout << "int: " << static_cast<int>(doubleValue) << std::endl;
+            if (doubleValue < -std::numeric_limits<float>::max() || doubleValue > std::numeric_limits<float>::max())
+                std::cout << "float: impossible" << std::endl;
+            else
+                std::cout << "float: " << static_cast<float>(doubleValue) << "f" << std::endl;
+            std::cout << "double: " << doubleValue << std::endl;
+        }
+    }
 
     // Check if it's an int
     else if ((literal[0] == '-' && literal.length() > 1) || (literal[0] == '+' && literal.length() > 1) || isdigit(literal[0])) {
@@ -60,23 +114,3 @@ void ScalarConverter::convert(std::string literal) {
     }
     std::cout << "Type: " << type << std::endl;
 }
-
-/*
-void ScalarConverter::convertInt(const std::string &literal) {
-    int value = std::stoi(literal);
-    std::cout << "int: " << value << std::endl;
-    std::cout << "int: impossible" << std::endl;
-}
-
-void ScalarConverter::convertChar(const std::string &literal) {
-    std::cout << "char: Non displayable" << std::endl;
-}
-
-void ScalarConverter::convertDouble(const std::string &literal) {
-    std::cout << "double: impossible" << std::endl;
-}
-
-void ScalarConverter::convertFloat(const std::string &literal) {
-    std::cout << "float: impossible" << std::endl;
-}
-*/
