@@ -1,6 +1,6 @@
-NAME					=	ScalarConverter
+NAME					=	Identify
 
-SRC						=	ScalarConverter.cpp main.cpp
+SRC						=	Identify.cpp main.cpp
 
 OBJ 					= 	$(SRC:.cpp=.o)
 
