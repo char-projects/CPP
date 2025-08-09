@@ -6,6 +6,7 @@ int main(int argc, char **argv)
         std::cerr << "Error: could not open file." << std::endl;
         return 1;
     }
+    (void)argv;
     BitcoinExchange exchange;
-    exchange.processFile(argv[1]);
+    exchange.parseInput(argv[1]);
 }

@@ -2,25 +2,22 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <map>
+#include <fstream>
 #include <stack>
+#include <cstdlib>
 
-template <typename T>
-class BitcoinExchange : public std::stack<T> {
+class BitcoinExchange {
     public:
         BitcoinExchange();
-
-        typedef typename std::stack<T>::container_type::iterator iterator;
-        iterator begin() {
-            return this->c.begin();
-        }
-        iterator end() {
-            return this->c.end();
-        }
-        
-        void processFile(const std::string &filename);
-        void displayExchangeRate(const std::string &date) const;
+        BitcoinExchange(const BitcoinExchange &other);
+        BitcoinExchange &operator=(const BitcoinExchange &other);
+        void parseInput(const std::string &input);
 
         ~BitcoinExchange();
+
+    private:
+        std::map<std::string, double> exchangeRates;
 };
 
 #endif
