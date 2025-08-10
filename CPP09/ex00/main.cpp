@@ -8,5 +8,6 @@ int main(int argc, char **argv)
     }
     (void)argv;
     BitcoinExchange exchange;
+    exchange.parseData();
     exchange.parseInput(argv[1]);
 }
