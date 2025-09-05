@@ -1,6 +1,6 @@
 # C++ (CPP) Modules
 
-When I'm done, this repository will contain 10 C++ (CPP) modules. Each module consists of a series of exercises designed to reinforce and expand my knowledge of C++ programming concepts.
+This repository contains 10 C++ (CPP) modules. Each module consists of a series of exercises designed to reinforce and expand my knowledge of C++ programming concepts.
 
 ## Module List
 
