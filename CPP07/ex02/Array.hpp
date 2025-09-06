@@ -2,6 +2,8 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#define PURPLE "\033[0;35m"
+#define WHITE "\033[0;0m"
 
 template <typename T>
 class Array {
