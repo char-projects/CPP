@@ -6,8 +6,8 @@ int main()
     data->value = 42;
     data->name = "Málaga";
     Data *data2 = new Data;
-    data2->value = 'c'; // ASCII value of 'c' is 99
-    data2->name = "ways to die";
+    data2->value = '*'; // ASCII value of '*' is 42
+    data2->name = "Madrid";
 
     uintptr_t raw = Serializer::serialize(data);
     Data *deserialized = Serializer::deserialize(raw);
