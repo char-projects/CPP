@@ -37,7 +37,8 @@ int main() {
     } catch (const NotFoundException& e) {
         std::cerr << e.what() << std::endl;
     }
-
+    std::cout << "───────────────────────────────────────────" << std::endl;
+    
     std::cout << "Deque:" << std::endl;
     std::deque<int> deq;
     for (int i = 1; i <= 5; ++i) {
