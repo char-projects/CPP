@@ -23,7 +23,7 @@ void ScalarConverter::convert(std::string literal) {
         return;
 	}
 
-    char type;
+    char type = '\0';
     // Check if it's a char
     if (literal.length() == 1 && isprint(literal[0]) && !isdigit(literal[0])) {
         type = 'c';
@@ -55,8 +55,8 @@ void ScalarConverter::convert(std::string literal) {
                 std::cout << "int: impossible" << std::endl;
             else
                 std::cout << "int: " << static_cast<int>(floatValue) << std::endl;
-            std::cout << "float: " << floatValue << "f" << std::endl;
-            std::cout << "double: " << static_cast<double>(floatValue) << std::endl;
+            std::cout << "float: " << literal << std::endl;
+            std::cout << "double: " << floatLiteral << std::endl;
         }
     }
 
@@ -84,8 +84,8 @@ void ScalarConverter::convert(std::string literal) {
             if (doubleValue < -std::numeric_limits<float>::max() || doubleValue > std::numeric_limits<float>::max())
                 std::cout << "float: impossible" << std::endl;
             else
-                std::cout << "float: " << static_cast<float>(doubleValue) << "f" << std::endl;
-            std::cout << "double: " << doubleValue << std::endl;
+                std::cout << "float: " << literal << "f" << std::endl;
+            std::cout << "double: " << literal << std::endl;
         }
     }
 
@@ -112,5 +112,8 @@ void ScalarConverter::convert(std::string literal) {
             std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
         }
     }
-    std::cout << "Type: " << type << std::endl;
+    else {
+        std::cerr << "Invalid literal: " << literal << std::endl;
+        return;
+    }
 }
