@@ -106,7 +106,12 @@ void ScalarConverter::convert(std::string literal) {
             std::cout << "float: impossible" << std::endl;
             std::cout << "double: impossible" << std::endl;
         } else {
-            std::cout << "char: Non displayable" << std::endl;
+            if (intValue < 0 || intValue > 127 || std::isnan(intValue))
+                std::cout << "char: impossible" << std::endl;
+            else if (!isprint(static_cast<int>(intValue)))
+                std::cout << "char: Non displayable" << std::endl;
+            else
+                std::cout << "char: '" << static_cast<char>(intValue) << "'" << std::endl;
             std::cout << "int: " << intValue << std::endl;
             std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
             std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
