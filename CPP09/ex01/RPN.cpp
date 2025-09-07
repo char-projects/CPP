@@ -5,6 +5,12 @@ RPN::RPN() {}
 RPN::~RPN() {}
 
 float RPN::evaluate(const std::string &expression) {
+    for (size_t i = 0; i < expression.size(); ++i) {
+        char c = expression[i];
+        if (!std::isdigit(c) && c != '+' && c != '-' && c != '*' && c != '/' && !std::isspace(c)) {
+            throw std::invalid_argument("Error");
+        }
+    }
     std::istringstream iss(expression);
     std::string token;
     std::stack<float> values;
