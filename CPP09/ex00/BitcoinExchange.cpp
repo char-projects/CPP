@@ -78,7 +78,10 @@ void BitcoinExchange::parseInput(const std::string &input) {
                 continue;
             } else {
                 float value = extractValue(line, pos);
-                printExchangeRate(date, value);
+                if (value > 1000)
+                    throw std::invalid_argument("too large a number.");
+                else
+                    printExchangeRate(date, value);
             }
         } catch (const std::exception &e) {
             std::cerr << "Error: " << e.what() << std::endl;
