@@ -26,13 +26,13 @@ int main(int argc, char **argv) {
     std::clock_t start = std::clock();
     pmerge.mergeSortVec(vec, 0, vec.size() - 1);
     std::clock_t stop = std::clock();
-    double timeVec = static_cast<double>(stop - start) / CLOCKS_PER_SEC * 100;
+    double timeVec = double(stop - start) / CLOCKS_PER_SEC * 100;
 
     std::deque<int> deq(vec.begin(), vec.end());
     std::clock_t beginning = std::clock();
     pmerge.mergeSortDeq(deq, 0, deq.size() - 1);
     std::clock_t end = std::clock();
-    double timeDeq = static_cast<double>(end - beginning) / CLOCKS_PER_SEC * 100;
+    double timeDeq = double(end - beginning) / CLOCKS_PER_SEC * 100;
 
     std::cout << "After:  ";
     for (size_t i = 0; i < vec.size(); ++i) {
