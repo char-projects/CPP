@@ -1,34 +1,36 @@
 #include "PmergeMe.hpp"
 
+// STILL NEED TO FIX THE PROCESSING TIME CALCULATION
+
 int main(int argc, char **argv) {
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <positive integers>" << std::endl;
         return 1;
     }
-
+    PmergeMe pmerge;
+    bool valid = pmerge.validateInput(argc, argv);
+    if (valid == false) {
+        std::cerr << "Error" << std::endl;
+        return 1;
+    }
     std::vector<int> vec;
+    
     std::cout << "Before: ";
     for (int i = 1; i < argc; ++i) {
-        char *endptr = NULL;
-        long val = std::strtol(argv[i], &endptr, 10);
-        if (*endptr != '\0' || val <= 0 || val > INT_MAX) {
-            std::cerr << "Error" << std::endl;
-            return 1;
-        }
-        vec.push_back(static_cast<int>(val));
-        std::cout << val << " ";
+        int value = std::atoi(argv[i]);
+        vec.push_back(value);
+        std::cout << value << " ";
     }
     std::cout << std::endl;
-    
+
     std::clock_t start = std::clock();
-    PmergeMe pmerge;
-    pmerge.sortVec(vec);
+    pmerge.mergeSortVec(vec, 0, vec.size() - 1);
     std::clock_t stop = std::clock();
     double timeVec = static_cast<double>(stop - start) / CLOCKS_PER_SEC * 100;
 
     std::deque<int> deq(vec.begin(), vec.end());
     std::clock_t beginning = std::clock();
-    pmerge.sortDeq(deq);
+    pmerge.mergeSortDeq(deq, 0, deq.size() - 1);
     std::clock_t end = std::clock();
     double timeDeq = static_cast<double>(end - beginning) / CLOCKS_PER_SEC * 100;
 

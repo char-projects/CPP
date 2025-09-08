@@ -2,10 +2,35 @@
 
 PmergeMe::PmergeMe() {}
 
-void PmergeMe::sortVec(std::vector<int> &vec) {
-    if (vec.empty() || vec.size() == 1)
-        throw std::invalid_argument("Error");
-    mergeSortVec(vec, 0, vec.size() - 1);
+PmergeMe::PmergeMe(const PmergeMe &other) {
+    (void)other;
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+    (void)other;
+    return *this;
+}
+
+bool PmergeMe::validateInput(int argc, char **argv) {
+    // Check if each argument is a valid positive int
+    for (int i = 1; i < argc; ++i) {
+        const char *str = argv[i];
+        for (size_t j = 0; j < strlen(str); j++) {
+            if (!std::isdigit(str[j]))
+                return false;
+        }
+        if (str[0] == '\0' || std::strtol(str, NULL, 10) > INT_MAX) 
+            return false;
+    }
+    // Check for duplicates
+    for (int i = 1; i < argc - 1; ++i) {
+        int value = std::atoi(argv[i]);
+        for (int j = i + 1; j < argc; ++j) {
+            if (value == std::atoi(argv[j]))
+                return false;
+        }
+    }
+    return true;
 }
 
 void PmergeMe::mergeSortVec(std::vector<int> &vec, int left, int right) {
@@ -54,12 +79,6 @@ void PmergeMe::mergeVec(std::vector<int> &vec, int left, int mid, int right) {
         j++;
         k++;
     }
-}
-
-void PmergeMe::sortDeq(std::deque<int> &deq) {
-    if (deq.empty() || deq.size() == 1)
-        throw std::invalid_argument("Error");
-    mergeSortDeq(deq, 0, deq.size() - 1);
 }
 
 void PmergeMe::mergeSortDeq(std::deque<int> &deq, int left, int right) {

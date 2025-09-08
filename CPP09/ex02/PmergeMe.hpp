@@ -9,15 +9,15 @@
 #include <stdexcept>
 #include <climits>
 #include <ctime>
+#include <cstring>
 
 class PmergeMe {
     public:
         PmergeMe();
         ~PmergeMe();
-        void sortVec(std::vector<int> &vec);
-        void sortDeq(std::deque<int> &deq);
-
-    private:
+        PmergeMe(const PmergeMe &other);
+        PmergeMe &operator=(const PmergeMe &other);
+        bool validateInput(int argc, char **argv);
         void mergeSortVec(std::vector<int> &vec, int left, int right);
         void mergeVec(std::vector<int> &vec, int left, int mid, int right);
         void mergeSortDeq(std::deque<int> &deq, int left, int right);

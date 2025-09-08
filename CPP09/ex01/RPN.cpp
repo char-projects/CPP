@@ -4,6 +4,15 @@ RPN::RPN() {}
 
 RPN::~RPN() {}
 
+RPN::RPN(const RPN &other) {
+    (void)other;
+}
+
+RPN &RPN::operator=(const RPN &other) {
+    (void)other;
+    return *this;
+}
+
 float RPN::evaluate(const std::string &expression) {
     for (size_t i = 0; i < expression.size(); ++i) {
         char c = expression[i];

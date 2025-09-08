@@ -12,6 +12,8 @@ class RPN {
     public:
         RPN();
         ~RPN();
+        RPN(const RPN &other);
+        RPN &operator=(const RPN &other);
         float evaluate(const std::string &expression);
         
     private:
