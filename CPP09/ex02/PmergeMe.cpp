@@ -3,11 +3,12 @@
 PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe &other) {
-    (void)other;
+    *this = other;
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
-    (void)other;
+    if (this != &other) 
+        *this = other;
     return *this;
 }
 
